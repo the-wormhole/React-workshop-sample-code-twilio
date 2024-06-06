@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Component</title>
+    <!-- JSX stands for JavaScript as XML -->
+</head>
+<body>
+    <div id="root">
+    </div>
+
+    <script type="text/babel">
+        
+        // A function starting with a capital letter and returning an Element 
+        // is a Component;
+        function Header(){
+            return (
+                <header>
+                    <h1>First component</h1>
+                </header>
+            )
+        }
+
+        ReactDOM.render(
+            // calling a component
+            //Header() - this works as well, since it is making a call to a function that returns an element
+            <Header/>,
+            document.getElementById("root")
+        )
+    </script>
+</body>
+</html>
