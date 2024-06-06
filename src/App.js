@@ -1,23 +1,36 @@
 import logo from './logo.svg';
 import './App.css';
+import {useState} from 'react'
 
 function App() {
+
+  const [contacts,setContacts] = useState([]);
+  const [name,setName] = useState("");
+  const [number,setNumber] = useState("");
+
+  function add(e){
+    e.preventDefault();
+
+    setContacts([...contacts,{name:name,number:number}]);
+    setName("");
+    setNumber("");
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <h1>Contact List</h1>
+        <form onSubmit={add}>
+          <input type="text" placeholder="Enter name" onChange={(event) =>{setName(event.target.value)}} value={name}/>
+          <input type="number" placeholder="Enter number" onChange={(event) =>{setNumber(event.target.value)}} value={number}/>
+          <input type="submit"/>
+        </form>
+        <ul>
+          {contacts.map((contact,index)=>
+            <li key={index}>
+              Name - {contact.name} 
+              Number - {contact.number}
+            </li>
+          )}
+        </ul>
     </div>
   );
 }
